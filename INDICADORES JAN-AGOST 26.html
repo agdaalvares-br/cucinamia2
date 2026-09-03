@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cucina Mia — Indicadores Mensais 2026 (Jan–Ago)</title>
+<style>
+  :root {
+    --green: #416c4d;
+    --green-dark: #33543c;
+    --green-pale: #e9f0e9;
+    --cream: #ede7e0;
+    --card: #fdfbf7;
+    --ink: #33302b;
+    --muted: #8c8378;
+    --gold: #a0804d;
+    --gold-pale: #f3e9d7;
+    --border: #e4ddd0;
+    --neg: #a85a3a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--cream);
+    color: var(--ink);
+  }
+  .sheet {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--cream);
+  }
+  .masthead {
+    background: var(--green);
+    color: var(--card);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 32px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-mark {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green);
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+  .brand-text .name {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--card);
+  }
+  .brand-text .tag {
+    font-size: 9.5px;
+    letter-spacing: 1.2px;
+    color: #cfe0d3;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+  .doc-meta {
+    text-align: right;
+    font-size: 10.5px;
+    color: #dbe8dd;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+  }
+  .doc-meta .title {
+    font-family: Georgia, serif;
+    font-size: 14.5px;
+    color: var(--card);
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .confidential {
+    display: inline-block;
+    margin-top: 3px;
+    font-size: 8.5px;
+    letter-spacing: 1px;
+    color: var(--card);
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 1px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .content {
+    padding: 12px 28px 10px;
+  }
+
+  .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(51,48,43,0.08);
+  }
+
+  table.indic {
+    margin-top: 0;
+    width: 100%;
+    min-width: 1150px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 9.8px;
+    font-family: Arial, sans-serif;
+    background: var(--card);
+  }
+  table.indic thead th {
+    background: var(--green);
+    color: var(--card);
+    padding: 6px 6px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  table.indic thead th:first-child {
+    text-align: left;
+    padding-left: 12px;
+  }
+  table.indic thead th.total-col {
+    background: var(--gold);
+    color: #362a12;
+  }
+  tr.section td {
+    background: var(--green-pale);
+    color: var(--green-dark);
+    font-weight: 700;
+    padding: 3px 12px;
+    font-size: 9.5px;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  td.row-label {
+    padding: 3px 12px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  td.row-label.bold { font-weight: 700; color: var(--green-dark); }
+  td.num {
+    text-align: right;
+    padding: 3px 8px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  td.num.neg { color: var(--neg); }
+  td.num .sub {
+    font-size: 8.6px;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  td.num.total-col {
+    background: var(--gold-pale);
+    font-weight: 700;
+    border-left: 2px solid var(--gold);
+    border-bottom: 1px solid #ecdcb8;
+  }
+  tr:nth-child(even):not(.section) td:not(.total-col) { background: #f8f5ef; }
+  table.indic tbody tr { page-break-inside: avoid; break-inside: avoid; }
+  table.indic thead { display: table-header-group; }
+
+  .methodology {
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    color: var(--muted);
+    line-height: 1.5;
+    padding: 0 4px;
+  }
+  .footer {
+    margin-top: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  @page {
+    size: A4 landscape;
+    margin: 8mm 10mm;
+  }
+  @media print {
+    html, body { overflow: visible; }
+    body { background: var(--cream); }
+    .sheet { max-width: none; }
+    .table-wrap { overflow: visible; box-shadow: none; }
+    table.indic { min-width: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="brand">
+      <div class="brand-mark">CM</div>
+      <div class="brand-text">
+        <div class="name">Cucina Mia</div>
+        <div class="tag">Indicadores Mensais &middot; 2026</div>
+      </div>
+    </div>
+    <div class="doc-meta">
+      <div class="title">Indicadores Mensais &middot; DRE por Competência 2026</div>
+      Janeiro &ndash; Agosto de 2026<br>
+      Atualizado com a competência de agosto
+      <div><span class="confidential">Confidencial</span></div>
+    </div>
+  </div>
+
+  <div class="content">
+  <div class="table-wrap">
+  <table class="indic">
+    <thead>
+      <tr>
+        <th>Indicador</th>
+        <th>Jan/26</th><th>Fev/26</th><th>Mar/26</th><th>Abr/26</th><th>Mai/26</th><th>Jun/26</th><th>Jul/26</th><th>Ago/26</th>
+        <th class="total-col">Total<br>(Jan&ndash;Ago)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="section"><td colspan="10">RECEITA</td></tr>
+<tr><td class="row-label">Receita Bruta (R$)</td><td class="num">R$ 2.270.644,00</td><td class="num">R$ 2.021.571,00</td><td class="num">R$ 2.593.366,00</td><td class="num">R$ 2.527.231,00</td><td class="num">R$ 2.754.157,00</td><td class="num">R$ 2.138.230,00</td><td class="num">R$ 2.297.776,00</td><td class="num">R$ 2.500.663,00</td><td class="num total-col">R$ 19.103.638,00</td></tr>
+<tr><td class="row-label">Receita Líquida sem Serviço (R$)</td><td class="num">R$ 2.067.232,96</td><td class="num">R$ 1.839.551,86</td><td class="num">R$ 2.358.661,03</td><td class="num">R$ 2.300.080,00</td><td class="num">R$ 2.504.458,00</td><td class="num">R$ 1.944.531,00</td><td class="num">R$ 2.089.790,00</td><td class="num">R$ 2.274.467,00</td><td class="num total-col">R$ 17.378.771,85</td></tr>
+<tr class="section"><td colspan="10">CUSTO E MARGEM DE CONTRIBUIÇÃO</td></tr>
+<tr><td class="row-label">CMV (R$)</td><td class="num">R$ 784.912,21<div class="sub">37,97%</div></td><td class="num">R$ 849.561,98<div class="sub">46,18%</div></td><td class="num">R$ 1.066.580,18<div class="sub">45,22%</div></td><td class="num">R$ 1.109.986,94<div class="sub">48,26%</div></td><td class="num">R$ 977.662,15<div class="sub">39,04%</div></td><td class="num">R$ 1.013.755,58<div class="sub">52,13%</div></td><td class="num">R$ 1.055.310,15<div class="sub">50,50%</div></td><td class="num">R$ 992.266,20<div class="sub">43,63%</div></td><td class="num total-col">R$ 7.850.035,39<div class="sub">45,17%</div></td></tr>
+<tr><td class="row-label">Margem de Contribuição (R$)</td><td class="num">R$ 1.485.731,79<div class="sub">65,43%</div></td><td class="num">R$ 1.172.009,02<div class="sub">57,98%</div></td><td class="num">R$ 1.526.785,82<div class="sub">58,87%</div></td><td class="num">R$ 1.417.244,06<div class="sub">56,08%</div></td><td class="num">R$ 1.776.494,85<div class="sub">64,50%</div></td><td class="num">R$ 1.124.474,42<div class="sub">52,59%</div></td><td class="num">R$ 1.242.465,85<div class="sub">54,07%</div></td><td class="num">R$ 1.508.396,80<div class="sub">60,32%</div></td><td class="num total-col">R$ 11.253.602,61<div class="sub">58,91%</div></td></tr>
+<tr class="section"><td colspan="10">DESPESAS</td></tr>
+<tr><td class="row-label">Despesas Financeiras / Taxas Cartão (R$)</td><td class="num">R$ 45.735,06<div class="sub">2,21%</div></td><td class="num">R$ 55.822,12<div class="sub">3,03%</div></td><td class="num">R$ 72.820,19<div class="sub">3,09%</div></td><td class="num">R$ 69.420,40<div class="sub">3,02%</div></td><td class="num">R$ 70.521,30<div class="sub">2,82%</div></td><td class="num">R$ 57.843,21<div class="sub">2,97%</div></td><td class="num">R$ 58.738,69<div class="sub">2,81%</div></td><td class="num">R$ 64.638,90<div class="sub">2,84%</div></td><td class="num total-col">R$ 495.539,87<div class="sub">2,85%</div></td></tr>
+<tr><td class="row-label">Despesas Gerais (R$)</td><td class="num">R$ 424.377,31<div class="sub">20,53%</div></td><td class="num">R$ 356.912,63<div class="sub">19,40%</div></td><td class="num">R$ 429.646,52<div class="sub">18,22%</div></td><td class="num">R$ 399.768,71<div class="sub">17,38%</div></td><td class="num">R$ 403.760,20<div class="sub">16,12%</div></td><td class="num">R$ 382.345,03<div class="sub">19,66%</div></td><td class="num">R$ 371.307,26<div class="sub">17,77%</div></td><td class="num">R$ 382.726,99<div class="sub">16,83%</div></td><td class="num total-col">R$ 3.150.844,65<div class="sub">18,13%</div></td></tr>
+<tr><td class="row-label">Gestão de Pessoas / Folha (R$)</td><td class="num">R$ 600.420,45<div class="sub">29,04%</div></td><td class="num">R$ 564.393,68<div class="sub">30,68%</div></td><td class="num">R$ 643.542,91<div class="sub">27,28%</div></td><td class="num">R$ 661.591,29<div class="sub">28,76%</div></td><td class="num">R$ 708.670,68<div class="sub">28,30%</div></td><td class="num">R$ 623.518,02<div class="sub">32,07%</div></td><td class="num">R$ 614.988,42<div class="sub">29,43%</div></td><td class="num">R$ 678.645,84<div class="sub">29,84%</div></td><td class="num total-col">R$ 5.095.771,29<div class="sub">29,32%</div></td></tr>
+<tr><td class="row-label">Pró-labore (R$)</td><td class="num">R$ 37.500,00<div class="sub">1,81%</div></td><td class="num">R$ 37.500,00<div class="sub">2,04%</div></td><td class="num">R$ 37.500,00<div class="sub">1,59%</div></td><td class="num">R$ 37.500,00<div class="sub">1,63%</div></td><td class="num">R$ 37.500,00<div class="sub">1,50%</div></td><td class="num">R$ 37.500,00<div class="sub">1,93%</div></td><td class="num">R$ 37.500,00<div class="sub">1,79%</div></td><td class="num">R$ 37.500,00<div class="sub">1,65%</div></td><td class="num total-col">R$ 300.000,00<div class="sub">1,73%</div></td></tr>
+<tr class="section"><td colspan="10">RESULTADO</td></tr>
+<tr><td class="row-label bold">Resultado Operacional / EBITDA (R$)</td><td class="num">R$ 377.698,98<div class="sub">16,63%</div></td><td class="num">R$ 157.380,59<div class="sub">7,79%</div></td><td class="num">R$ 343.276,20<div class="sub">13,24%</div></td><td class="num">R$ 248.963,66<div class="sub">9,85%</div></td><td class="num">R$ 556.042,67<div class="sub">20,19%</div></td><td class="num">R$ 23.268,16<div class="sub">1,09%</div></td><td class="num">R$ 159.931,48<div class="sub">6,96%</div></td><td class="num">R$ 344.885,07<div class="sub">13,79%</div></td><td class="num total-col">R$ 2.211.446,81<div class="sub">11,58%</div></td></tr>
+<tr class="section"><td colspan="10">MOVIMENTAÇÕES ATÉ O RESULTADO FINAL</td></tr>
+<tr><td class="row-label">(–) Retiradas de Sócios (R$)</td><td class="num">R$ 0,00<div class="sub">0,00%</div></td><td class="num">R$ 33.289,67<div class="sub">1,81%</div></td><td class="num">R$ 68.289,67<div class="sub">2,90%</div></td><td class="num">R$ 33.289,67<div class="sub">1,45%</div></td><td class="num">R$ 133.289,60<div class="sub">5,32%</div></td><td class="num">R$ 33.289,67<div class="sub">1,71%</div></td><td class="num">R$ 133.289,67<div class="sub">6,38%</div></td><td class="num">R$ 33.289,67<div class="sub">1,46%</div></td><td class="num total-col">R$ 468.027,62<div class="sub">2,69%</div></td></tr>
+<tr><td class="row-label">(–) Investimentos / Capex (R$)</td><td class="num">R$ 67.544,42<div class="sub">3,27%</div></td><td class="num">R$ 60.480,15<div class="sub">3,29%</div></td><td class="num">R$ 79.498,13<div class="sub">3,37%</div></td><td class="num">R$ 63.552,55<div class="sub">2,76%</div></td><td class="num">R$ 81.879,74<div class="sub">3,27%</div></td><td class="num">R$ 124.763,27<div class="sub">6,42%</div></td><td class="num">R$ 64.110,11<div class="sub">3,07%</div></td><td class="num">R$ 70.534,63<div class="sub">3,10%</div></td><td class="num total-col">R$ 612.363,00<div class="sub">3,52%</div></td></tr>
+<tr><td class="row-label">(–) Empréstimos — Juros + Amort. (R$)</td><td class="num">R$ 19.100,00<div class="sub">0,92%</div></td><td class="num">R$ 19.100,00<div class="sub">1,04%</div></td><td class="num">R$ 219.100,00<div class="sub">9,29%</div></td><td class="num">R$ 64.058,33<div class="sub">2,79%</div></td><td class="num">R$ 351.728,09<div class="sub">14,04%</div></td><td class="num">R$ 7.094,76<div class="sub">0,36%</div></td><td class="num">R$ 290.885,04<div class="sub">13,92%</div></td><td class="num">R$ 7.094,76<div class="sub">0,31%</div></td><td class="num total-col">R$ 978.160,98<div class="sub">5,63%</div></td></tr>
+<tr class="section"><td colspan="10">RESULTADO FINAL</td></tr>
+<tr><td class="row-label bold">Resultado Final (R$)</td><td class="num">R$ 291.054,56<div class="sub">14,08%</div></td><td class="num">R$ 44.510,77<div class="sub">2,42%</div></td><td class="num neg">(R$ 23.611,60)<div class="sub">-1,00%</div></td><td class="num">R$ 88.063,11<div class="sub">3,83%</div></td><td class="num neg">(R$ 10.854,76)<div class="sub">-0,43%</div></td><td class="num neg">(R$ 141.879,54)<div class="sub">-7,30%</div></td><td class="num neg">(R$ 328.353,34)<div class="sub">-15,71%</div></td><td class="num">R$ 233.966,01<div class="sub">10,29%</div></td><td class="num total-col">R$ 152.895,21<div class="sub">0,88%</div></td></tr>
+<tr class="section"><td colspan="10">OUTROS INDICADORES</td></tr>
+<tr><td class="row-label">Ponto de Equilíbrio — Rec. Bruta Mínima (R$)</td><td class="num">R$ 1.693.406,64</td><td class="num">R$ 1.750.108,89</td><td class="num">R$ 2.010.284,33</td><td class="num">R$ 2.083.278,76</td><td class="num">R$ 1.892.106,20</td><td class="num">R$ 2.093.984,73</td><td class="num">R$ 2.002.003,91</td><td class="num">R$ 1.928.902,75</td><td class="num total-col">R$ 15.349.579,80</td></tr>
+<tr><td class="row-label">Crescimento Rec. Bruta vs Mês Anterior</td><td class="num">&mdash;</td><td class="num neg">-10,97%</td><td class="num">+28,28%</td><td class="num neg">-2,55%</td><td class="num">+8,98%</td><td class="num neg">-22,36%</td><td class="num">+7,46%</td><td class="num">+8,83%</td><td class="num total-col">&mdash;</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="methodology">
+    <strong>Metodologia:</strong> CMV, despesas financeiras, gerais, com pessoal e margem líquida final calculados
+    sobre a Receita Líquida sem Serviço; Margem de Contribuição, Resultado Operacional (EBITDA) e Margem
+    Operacional calculados sobre a Receita Bruta. Gestão de Pessoas e Pró-labore exibidos em linhas separadas.
+    Ponto de Equilíbrio = (Despesas Financeiras + Despesas Gerais + Gestão de Pessoas + Pró-labore) ÷
+    (Margem de Contribuição ÷ Receita Bruta). Valores conciliados com o DRE Anual 2026 por Competência
+    (versão com agosto).
+  </div>
+  <div class="footer">Cucina Mia 2026 &middot; Indicadores Mensais &middot; Jan &ndash; Ago/2026 &middot; Confidencial</div>
+  </div>
+
+</div>
+</body>
+</html>
